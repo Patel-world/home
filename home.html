@@ -203,7 +203,10 @@
 
 							<!-- Sidebars overview -->
 							<div class="panel panel-flat">
-								<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+								
+								{% for blog in projects %}
+								<div class="col-lg-3 col-sm-6">
+									<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-format="fluid"
@@ -213,8 +216,6 @@
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-								{% for blog in projects %}
-								<div class="col-lg-3 col-sm-6">
 									<div class="thumbnail">
 										<img class='ig' src='{{ blog.image }}'>
 										<div class="caption">
