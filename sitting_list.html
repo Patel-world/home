@@ -184,8 +184,8 @@
                                         </form>
                                     </tr>
 			                        {% for sitting in sitting_list %}
-                                        {% if sitting.get_percent_correct > 30 %}
-                                        <tr class="success">
+                                        {% if sitting.get_percent_correct < 30 %}
+                                        <tr class="danger">
                                             <td>{{ sitting.user }}</td>
                                             <td>{{ sitting.quiz }}</td>
                                             <td>{{ sitting.end }}</td>
@@ -195,13 +195,15 @@
                                                     {% trans "View details" %}
                                                 </a>
                                         </tr>
-                                        {% else %}
-                                        <tr class="danger">
-                                            <td>{{ sitting.user }}</td>
-                                            <td>{{ sitting.quiz }}</td>
-                                            <td>{{ sitting.end }}</td>
-                                            <td>{{ sitting.get_percent_correct }}</td>
-                                            <td>
+                                        {% endif %}{% endfor %}
+                                    {% for sitting in sitting_list %}
+                                        {% if sitting.get_percent_correct >= 30 %}
+                                            <tr class="success">
+                                                <td>{{ sitting.user }}</td>
+                                                <td>{{ sitting.quiz }}</td>
+                                                <td>{{ sitting.end }}</td>
+                                                <td>{{ sitting.get_percent_correct }}</td>
+                                                <td>
                                                 <a href="{% url 'quiz_marking_detail' pk=sitting.id %}">
                                                     {% trans "View details" %}
                                                 </a>
